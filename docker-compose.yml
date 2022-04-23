@@ -1,0 +1,24 @@
+version: "3"
+# ${定数}はカレントの.envに定義する
+services:
+  pgsql_study:
+    image: postgres:alpine
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    volumes:
+      - ./pgsql_db:/var/lib/postgresql/data
+    container_name: pgsql_study
+  mysql_study:
+    image: mysql
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    volumes:
+      - ./mysql_db:/var/lib/mysql
+    container_name: mysql_study
